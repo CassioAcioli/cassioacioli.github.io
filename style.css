@@ -36,16 +36,17 @@ section h2 {
   color: #004080;
 }
 
-button {
-  background-color: #004080;
-  border: none;
-  padding: 10px 16px;
+.botao-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
   color: white;
-  cursor: pointer;
+  text-decoration: none;
   border-radius: 5px;
-  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s;
 }
 
-button:hover {
-  background-color: #0066cc;
+.botao-link:hover {
+  background-color: #45a049;
 }
