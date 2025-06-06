@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercícios de Funções em JavaScript</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <h1>Exercícios de Funções em JavaScript</h1>
+
+  <!-- 1. MAIOR_MENOR -->
+  <h2>1) MAIOR_MENOR</h2>
+  <p>Digite cinco números inteiros:</p>
+  <input type="number" id="m1">
+  <input type="number" id="m2">
+  <input type="number" id="m3">
+  <input type="number" id="m4">
+  <input type="number" id="m5">
+  <button onclick="maiorMenor()">Executar</button>
+  <div class="output" id="out1"></div>
+
+  <!-- 2. VOGAL -->
+  <h2>2) VOGAL</h2>
+  <p>Digite um caractere:</p>
+  <input type="text" id="vogalInput" maxlength="1">
+  <button onclick="verificaVogal()">Executar</button>
+  <div class="output" id="out2"></div>
+
+  <!-- 3. LIMITES -->
+  <h2>3) LIMITES</h2>
+  <p>Digite os limites inferior e superior:</p>
+  <input type="number" id="li">
+  <input type="number" id="ls">
+  <button onclick="executaLimites()">Executar</button>
+  <div class="output" id="out3"></div>
+
+  <!-- 4. ORDEM -->
+  <h2>4) ORDEM</h2>
+  <p>Digite três números:</p>
+  <input type="number" id="o1">
+  <input type="number" id="o2">
+  <input type="number" id="o3">
+  <button onclick="ordem()">Executar</button>
+  <div class="output" id="out4"></div>
+
+  <!-- 5. POSITIVO_NEGATIVO -->
+  <h2>5) POSITIVO_NEGATIVO</h2>
+  <button onclick="positivoNegativo()">Executar</button>
+  <div class="output" id="out5"></div>
+
+  <!-- 6. PAR_IMPAR -->
+  <h2>6) PAR_IMPAR</h2>
+  <button onclick="parImpar()">Executar</button>
+  <div class="output" id="out6"></div>
+
+  <script>
+    // 1) MAIOR_MENOR
+    function maiorMenor() {
+      let nums = [
+        parseInt(document.getElementById("m1").value),
+        parseInt(document.getElementById("m2").value),
+        parseInt(document.getElementById("m3").value),
+        parseInt(document.getElementById("m4").value),
+        parseInt(document.getElementById("m5").value)
+      ];
+      let maior = Math.max(...nums);
+      let menor = Math.min(...nums);
+      document.getElementById("out1").textContent = `Maior: ${maior}, Menor: ${menor}`;
+    }
+
+    // 2) VOGAL
+    function VOGAL(c) {
+      return "aeiouAEIOU".includes(c) ? 1 : 0;
+    }
+    function verificaVogal() {
+      let c = document.getElementById("vogalInput").value;
+      let resultado = VOGAL(c);
+      document.getElementById("out2").textContent = resultado === 1 ? "É uma vogal." : "Não é uma vogal.";
+    }
+
+    // 3) LIMITES
+    function LIMITES(li, ls) {
+      let pares = [];
+      let soma = 0;
+
+      for (let i = li + 1; i < ls; i++) {
+        if (i % 2 === 0) {
+          pares.push(i);
+          soma += i;
+        }
+      }
+
+      return { pares, soma };
+    }
+    function executaLimites() {
+      let li = parseInt(document.getElementById("li").value);
+      let ls = parseInt(document.getElementById("ls").value);
+      let resultado = LIMITES(li, ls);
+      document.getElementById("out3").textContent =
+        `Pares no intervalo aberto: ${resultado.pares.join(", ")} | Soma: ${resultado.soma}`;
+    }
+
+    // 4) ORDEM
+    function ordem() {
+      let a = parseInt(document.getElementById("o1").value);
+      let b = parseInt(document.getElementById("o2").value);
+      let c = parseInt(document.getElementById("o3").value);
+      let ordenado = [a, b, c].sort((x, y) => x - y);
+      document.getElementById("out4").textContent = `Ordem crescente: ${ordenado.join(", ")}`;
+    }
+
+    // 5) POSITIVO_NEGATIVO
+    function POSITIVO_NEGATIVO(x) {
+      return x > 0;
+    }
+    function positivoNegativo() {
+      let valor = parseInt(prompt("Digite um número inteiro:"));
+      let resultado = POSITIVO_NEGATIVO(valor);
+      document.getElementById("out5").textContent =
+        resultado ? "Número positivo." : "Número negativo ou zero.";
+    }
+
+    // 6) PAR_IMPAR
+    function PAR_IMPAR(x) {
+      return x % 2 === 0;
+    }
+    function parImpar() {
+      let valor = parseInt(prompt("Digite um número inteiro:"));
+      let resultado = PAR_IMPAR(valor);
+      document.getElementById("out6").textContent =
+        resultado ? "Número par." : "Número ímpar.";
+    }
+  </script>
+
+</body>
+</html>
